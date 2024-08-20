@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: API de Diferença entre Datas
+  description: Esta API calcula a diferença entre duas datas e horas, retornando a diferença no formato especificado.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /diferencadatas:
+    get:
+      summary: Calcula a diferença entre duas datas e horas
+      description: Calcula a diferença entre duas datas e horas fornecidas, retornando a diferença no formato solicitado.
+      parameters:
+        - name: datai
+          in: query
+          description: Data de início no formato DD/MM/YYYY
+          required: true
+          schema:
+            type: string
+            example: '02/03/2001'
+        - name: h1
+          in: query
+          description: Hora de início no formato HH:mm
+          required: true
+          schema:
+            type: string
+            example: '12:00'
+        - name: dataf
+          in: query
+          description: Data final no formato DD/MM/YYYY
+          required: true
+          schema:
+            type: string
+            example: '02/04/2002'
+        - name: h2
+          in: query
+          description: Hora final no formato HH:mm
+          required: true
+          schema:
+            type: string
+            example: '15:30'
+        - name: format
+          in: query
+          description: Formato da diferença. Pode ser 'YMdhm', 'YMd', 'Y', 'M', 'd', 'h', 'm', 'dhm', 'dh', 'dm', 'hm'
+          required: false
+          schema:
+            type: string
+            default: 'dhm'
+            example: 'YMdhm'
+      responses:
+        '200':
+          description: Diferença calculada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  difference:
+                    type: object
+                    properties:
+                      years:
+                        type: integer
+                        description: Número de anos na diferença
+                      months:
+                        type: integer
+                        description: Número de meses na diferença
+                      days:
+                        type: integer
+                        description: Número de dias na diferença
+                      hours:
+                        type: integer
+                        description: Número de horas na diferença
+                      minutes:
+                        type: integer
+                        description: Número de minutos na diferença
+                    example:
+                      years: 1
+                      months: 1
+                      days: 30
+                      hours: 3
+                      minutes: 30
+        '400':
+          description: Erro na requisição devido a parâmetros inválidos ou faltantes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Mensagem de erro
+                    example: 'Parâmetros datai, dataf, h1 e h2 são obrigatórios.'
