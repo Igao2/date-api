@@ -6,6 +6,7 @@ const port = process.env.PORT || 8000;
 app.use(express.static('www'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 function calculardif(datai,dataf,format){
     const diffMs = Math.abs(new Date(dataf) - new Date(datai));
