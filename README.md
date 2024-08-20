@@ -33,11 +33,15 @@ Needs three arguments, with two optionals arguments h1 and h2
     <br>
     <h2>Examples</h2>
     <br>
+    <h3>Example 1</h3>
+    <br>
     <p>In this example, we're using the query "?datai=22/03/2022&h1=22:10&dataf=22/04/2024&format=YMdhm"</p>
-    ![image](https://github.com/user-attachments/assets/19f0904b-b5f8-4f5f-b8f0-fe35bd988ac7)
+     <img src=https://github.com/user-attachments/assets/c2fd1da8-d3dc-4bd3-82dd-32adf309d80b>
     <br><br>
     This return the diference between the date 22/03/2022 22:10 and 22/04/2024 00:00(observe that hours can be ignored, and the api will assume that you put 00:00) in years,months,days, hours and minutes.<br><br>
-    ![image](https://github.com/user-attachments/assets/c2fd1da8-d3dc-4bd3-82dd-32adf309d80b)
+    <h3>Example 2</h3>
+    <br>
+    <img src=https://github.com/user-attachments/assets/c2fd1da8-d3dc-4bd3-82dd-32adf309d80b>   
     <br><br>
     <p>Anoter example, this time utilizing "format=dhm" and the same dates</p>
 
