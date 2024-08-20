@@ -1,5 +1,11 @@
+const express = require("express");
+const app = express();
+const bodyParser = require('body-parser');
 const moment = require('moment'); 
-
+const port = process.env.PORT || 8000;
+app.use(express.static('www'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 function calculardif(datai,dataf,format){
     const diffMs = Math.abs(new Date(dataf) - new Date(datai));
@@ -57,7 +63,7 @@ function calculardif(datai,dataf,format){
   
     
 }
-module.exports = (req,res)=>{
+app.get("/diferencadatas",(req,res)=>{
     const {datai,h1,dataf,h2,format="dhm"} = req.query;
     const dateFormat = 'DD/MM/YYYY';
     const timeFormat = 'HH:mm';
@@ -73,4 +79,7 @@ module.exports = (req,res)=>{
         
     var result = calculardif(dateTime1,dateTime2,format)
     res.json({ result })
-    }
+    })
+app.listen(port,()=>{
+    console.log("AAA")
+})
