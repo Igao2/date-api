@@ -30,6 +30,9 @@ function calculardif(datai,dataf,format){
       case 'YMd':
         result = { years: diffYears, months: diffMonths, days: diffDays };
         break;
+      case 'YMdh':
+        result = { years:diffYears, months: diffMonths, days: diffDays, hours: diffHours };
+        break;
       case 'Y':
         result = { years: diffYears };
         break;
@@ -80,7 +83,7 @@ app.get("/diferencadatas",(req,res)=>{
      }
         
     var result = calculardif(dateTime1,dateTime2,format)
-    res.json({ result })
+    return.res.status(200).json({ result })
     })
 app.listen(port,()=>{
     console.log("AAA")
