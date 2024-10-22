@@ -16,6 +16,7 @@ function calculardif(datai,dataf,format){
     const diffYears = Math.floor(diffDays/365);
     const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const diffSeconds = Math.floor((diffMs % (100*60)/100));
     let result = {};
     switch (format) {
       case 'YMdhm':
@@ -25,6 +26,16 @@ function calculardif(datai,dataf,format){
           days: diffDays,
           hours: diffHours,
           minutes: diffMinutes
+        };
+        break;
+        case 'YMdhms':
+        result = {
+          years: diffYears,
+          months: diffMonths,
+          days: diffDays,
+          hours: diffHours,
+          minutes: diffMinutes,
+          seconds: diffSeconds
         };
         break;
       case 'YMd':
@@ -48,8 +59,13 @@ function calculardif(datai,dataf,format){
       case 'm':
         result = { minutes: diffMinutes };
         break;
+      case 's':
+        result = { seconds: diffSeconds };
       case 'dhm':
         result = { days: diffDays, hours: diffHours, minutes: diffMinutes };
+        break;
+      case 'dhms':
+        result = { days: diffDays, hours: diffHours, minutes: diffMinutes, seconds: diffSeconds };
         break;
       case 'dh':
         result = { days: diffDays, hours: diffHours };
@@ -59,6 +75,9 @@ function calculardif(datai,dataf,format){
         break;
       case 'hm':
         result = { hours: diffHours, minutes: diffMinutes };
+        break;
+      case 'hms':
+        result = { hours: diffHours, minutes: diffMinutes, seconds: diffSeconds };
         break;
       default:
         result = { error: 'Formato não reconhecido' };
@@ -83,7 +102,7 @@ app.get("/diferencadatas",(req,res)=>{
      }
         
     var result = calculardif(dateTime1,dateTime2,format)
-    return res.status(200).json({ result })
+    return res.json({ result })
     })
 app.listen(port,()=>{
     console.log("AAA")
