@@ -16,7 +16,7 @@ function calculardif(datai,dataf,format){
     const diffYears = Math.floor(diffDays/365);
     const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    const diffSeconds = Math.floor((diffMs % (100*60)/100));
+    const diffSeconds = Math.floor((diffMs % (1000*60)) / 100);
     let result = {};
     switch (format) {
       case 'YMdhm':
