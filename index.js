@@ -61,6 +61,7 @@ function calculardif(datai,dataf,format){
         break;
       case 's':
         result = { seconds: diffSeconds };
+        break;
       case 'dhm':
         result = { days: diffDays, hours: diffHours, minutes: diffMinutes };
         break;
