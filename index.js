@@ -83,7 +83,7 @@ app.get("/diferencadatas",(req,res)=>{
      }
         
     var result = calculardif(dateTime1,dateTime2,format)
-    return.res.status(200).json({ result })
+    return res.status(200).json({ result })
     })
 app.listen(port,()=>{
     console.log("AAA")
